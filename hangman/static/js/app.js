@@ -151,9 +151,9 @@ app.directive('hangman', function() {
 
         scope.$watch(
             "score", function(score) {
+                draw(0);
                 var i = 1;
                 while (i <=scope.score) {
-                    console.log(i);
                     draw(i);
                     i++;
                 }
