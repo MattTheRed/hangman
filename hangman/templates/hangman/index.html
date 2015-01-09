@@ -32,107 +32,14 @@
 <body ng-controller="MainCtrl">
     <div class="content">
         <h1>HANGMAN 5000</h1>
-        <canvas id="hangman-canvas" width="300" height="250"></canvas><br>
+        <hangman score="score"></hangman>
         <div ng-repeat="letter in letters" class="word-letters">
             [[letter]]
         </div>
         <br>
-        <a href="" class="guess" ng-repeat="letter in abc">[[letter]]</a>
+
+        <a href="" ng-click="changeScore()" class="guess" ng-repeat="letter in abc">[[letter]]</a>
     </div>
-    <script>
-        var c = document.getElementById("hangman-canvas");
-        var ctx = c.getContext("2d");
 
-        function init() {
-            ctx.beginPath();
-            ctx.moveTo(90,50);
-            ctx.lineTo(200,50);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.moveTo(90,48);
-            ctx.lineTo(90,70);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.moveTo(200,48);
-            ctx.lineTo(200,250);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.moveTo(150,250);
-            ctx.lineTo(250,250);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        function drawHead() {
-            ctx.beginPath();
-            ctx.arc(90,100,20,0,2*Math.PI);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        function drawBody() {
-            ctx.beginPath();
-            ctx.moveTo(90,120);
-            ctx.lineTo(90,180);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        function drawLeftArm() {
-            ctx.beginPath();
-            ctx.moveTo(40,130);
-            ctx.lineTo(90,140);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        function drawRightArm() {
-            ctx.beginPath();
-            ctx.moveTo(90,140);
-            ctx.lineTo(140,130);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        function drawLeftLeg() {
-            ctx.beginPath();
-            ctx.moveTo(40,230);
-            ctx.lineTo(90,178);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        function drawRightLeg() {
-            ctx.beginPath();
-            ctx.moveTo(90,178);
-            ctx.lineTo(140,230);
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#fff';
-            ctx.stroke();
-        }
-
-        init();
-        drawHead();
-        drawBody();
-        drawLeftArm();
-        drawRightArm();
-        drawLeftLeg();
-        drawRightLeg();
-    </script>
 </body>
 </html>
