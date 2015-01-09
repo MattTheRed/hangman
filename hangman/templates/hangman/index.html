@@ -42,7 +42,7 @@
                 <h3>WINS: [[gameData.score.wins]]</h3>
                 <h3>LOSSES: [[gameData.score.losses]]</h3>
 
-                <h3 ng-hide="gameData.current_game.outcome"># of guesses left: [[10 - gameData.current_game.guess_count]]</h3>
+                <h3 ng-hide="gameData.current_game.outcome"># GUESSES LEFT: [[10 - gameData.current_game.guess_count]]</h3>
             </div>
         </div>
         <br>
@@ -52,7 +52,7 @@
             </div><br>
             <a href="" ng-click="makeGuess(letter)" class="guess" ng-repeat="letter in gameData.current_game.remaining_letters">[[letter]]</a>
             <br>
-            <h4>Already Guessed</h4>
+            <h4 ng-show="gameData.current_game.guesses.length > 0">Letters already guessed:</h4>
             <span class="already-guessed" ng-repeat="letter in gameData.current_game.guesses">[[letter]]</span>
         </div>
     </div>

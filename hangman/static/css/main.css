@@ -81,11 +81,12 @@ h1 {
 .content {
     text-align:center;
     margin:auto;
-    width:600px;
+    width:700px;
 /*    background-color:#fff;*/
     margin-top:10px;
     border-radius:10px;
-    padding:20px;
+    padding:5px;
+    padding-bottom:30px;
 }
 
 
@@ -119,6 +120,7 @@ h1 {
     border:2px dashed #fff;
     padding:10px;
     height:280px;
+    width:150px;
     vertical-align: top;
     text-align:left;
 }
