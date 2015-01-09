@@ -24,16 +24,19 @@ class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 # # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'games', GameViewSet)
 
 urlpatterns = patterns('',
-    # url(r'^$', 'games.views.home', name='home'),
+    url(r'^$', 'hangman.views.home', name='home'),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )
 
