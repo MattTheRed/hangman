@@ -65,6 +65,9 @@ app.directive('hangman', function() {
             "score",
             function( score ) {
                 switch (score) {
+                    case 0:
+                        ctx.clearRect(0,0,320, 280);
+                        break;
                     case 1: //Base
                         ctx.beginPath();
                         ctx.moveTo(150,250);
