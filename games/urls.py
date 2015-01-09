@@ -34,7 +34,7 @@ router.register(r'games', GameViewSet)
 
 urlpatterns = patterns('',
     url(r'^$', 'hangman.views.home', name='home'),
-
+    url(r'^game-data/', 'hangman.views.game_data', name='game_data'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

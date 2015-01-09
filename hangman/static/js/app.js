@@ -136,6 +136,6 @@ app.directive('hangman', function() {
 
 
     },
-    template: '<canvas id="hangman-canvas" width="300" height="250"></canvas>[[score]]'
+    template: '<canvas id="hangman-canvas" width="320" height="280"></canvas>'
   };
 });

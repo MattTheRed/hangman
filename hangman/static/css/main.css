@@ -65,9 +65,8 @@ h1 {
 
 
 #hangman-canvas {
-/*    height:400px;*/
-/*    width:400px;
-    border:1px solid #222;*/
+    border:2px dashed #fff;
+    padding:10px;
 }
 
 
