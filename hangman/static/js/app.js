@@ -151,16 +151,13 @@ app.directive('hangman', function() {
 
         scope.$watch(
             "score", function(score) {
-                /* Looping up to current score so we redraw stickman state on
-                page refresh */
-                var i = 0;
-                while (i < scope.score) {
+                var i = 1;
+                while (i <=scope.score) {
+                    console.log(i);
                     draw(i);
                     i++;
                 }
         });
-
-
     },
     template: '<canvas id="hangman-canvas" width="320" height="280"></canvas>'
   };
