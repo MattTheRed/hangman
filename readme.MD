@@ -11,17 +11,17 @@ Installation
 ************
 
 Clone the repo from
-::
+```
     $ git clone git@github.com:MattTheRed/hangman.git
-
+```
 Create a virtualenv and install requirements
-::
+```
     $ pip install -r requirements.txt
-
+```
 Run the webserver
-::
+```
     $ python manage.py runserver
-
+```
 Login with the username/password m/m
 
 ************
