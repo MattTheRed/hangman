@@ -8,10 +8,15 @@ app.config(function($interpolateProvider) {
 
 
 app.factory('gameDataFactory', ['$http', function($http) {
+    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
     var url = 'game-data/';
     var dataFactory = {
         get: function() {
             return $http.get(url);
+        },
+        guess: function (letter) {
+            var payload = {"guess": letter};
+            return $http.post(url, payload);
         }
     };
 
@@ -20,29 +25,21 @@ app.factory('gameDataFactory', ['$http', function($http) {
 }]);
 
 
-
-
-
 app.controller('MainCtrl', ['$scope', 'gameDataFactory',
     function($scope, gameFactory) {
         gameFactory.get().success(function(gameData) {
             $scope.gameData = gameData;
         }).error();
 
-        $scope.abc = [
-            'A',
-            'B',
-            'C',
-            'D',
-            'E',
-            'F',
-            'G',
-            'I'
-        ];
-
         $scope.letters = ['B', 'A', ' '];
 
         $scope.score = 0;
+
+        $scope.makeGuess = function (letter) {
+            gameFactory.guess(letter).success(function (gameData) {
+                $scope.gameData = gameData;
+            });
+        };
 
         $scope.changeScore = function () {
             $scope.score++;

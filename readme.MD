@@ -29,7 +29,10 @@ Pull out django rest framework
 
 Someday
     Add registration process
+    Use a custom user model instead of the proxy model (even though django
+        docs recommend a proxy model)
     Add validation to simple api
+    Add csrf protection back in
 
 
 

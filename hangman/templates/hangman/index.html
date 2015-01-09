@@ -38,7 +38,7 @@
             [[letter]]
         </div>
         <br>
-        <a href="" ng-click="changeScore()" class="guess" ng-repeat="letter in gameData.current_game.remaining_letters">[[letter]]</a>
+        <a href="" ng-click="makeGuess(letter)" class="guess" ng-repeat="letter in gameData.current_game.remaining_letters">[[letter]]</a>
     </div>
 
 </body>
