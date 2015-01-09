@@ -147,7 +147,6 @@ app.directive('hangman', function() {
                         ctx.strokeStyle = '#fff';
                         ctx.stroke();
                         break;
-
                 }
             }
         );

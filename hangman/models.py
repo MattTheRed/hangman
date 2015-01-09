@@ -59,12 +59,10 @@ class Game(models.Model):
 
     @property
     def display_word(self):
-        print self.word.word
         letter_list = list(self.word.word.upper())
         guesses_list = self.guesses_list
         out_list = []
         for letter in letter_list:
-            print letter
             if letter in guesses_list:
                 out_list.append(letter)
             else:
