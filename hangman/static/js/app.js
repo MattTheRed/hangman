@@ -7,8 +7,28 @@ app.config(function($interpolateProvider) {
 });
 
 
-app.controller('MainCtrl', ['$scope',
-    function($scope) {
+app.factory('gameDataFactory', ['$http', function($http) {
+    var url = 'game-data/';
+    var dataFactory = {
+        get: function() {
+            return $http.get(url);
+        }
+    };
+
+    return dataFactory;
+
+}]);
+
+
+
+
+
+app.controller('MainCtrl', ['$scope', 'gameDataFactory',
+    function($scope, gameFactory) {
+        gameFactory.get().success(function(gameData) {
+            $scope.gameData = gameData;
+        }).error();
+
         $scope.abc = [
             'A',
             'B',

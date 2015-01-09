@@ -63,13 +63,14 @@ class Game(models.Model):
         data["score"] = {
             "wins": self.user.wins,
             "losses": self.user.losses,
-            "game": {
-                "guess_count": self.guess_count,
-                "outcome": self.outcome,
-                "remaining_letters": self.remaining_letters,
-                "guesses": [guess.letter for guess in self.guesses]
-            }
         }
+        data["current_game"] = {
+            "guess_count": self.guess_count,
+            "outcome": self.outcome,
+            "remaining_letters": self.remaining_letters,
+            "guesses": [guess.letter for guess in self.guesses]
+        }
+
         return json.dumps(data)
 
     @property

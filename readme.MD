@@ -25,6 +25,13 @@ Create the database
 ************
 Roadmap
 ************
+Pull out django rest framework
+
+Someday
+    Add registration process
+    Add validation to simple api
+
+
 
 models
     user
@@ -55,6 +62,9 @@ scability
     replace sqlite w/ postgres
     static resources on S3
     memcache for templates, sessions, etc
+
+
+
 
 
 
