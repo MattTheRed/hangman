@@ -18,7 +18,9 @@ def game_data(request):
     user = User.objects.get(pk=request.user.pk)
     game = user.current_game
     if request.method == "POST":
-        if "guess" in request.body:
+        if "newGame" in request.body:
+            game = Game.objects.create(user=user)
+        elif "guess" in request.body:
             guess = json.loads(request.body)["guess"]
             game.make_guess(guess)
     return HttpResponse(game.json, content_type="application/json")

@@ -17,6 +17,10 @@ app.factory('gameDataFactory', ['$http', function($http) {
         guess: function (letter) {
             var payload = {"guess": letter};
             return $http.post(url, payload);
+        },
+        newGame: function () {
+            var payload = {"newGame": true};
+            return $http.post(url, payload);
         }
     };
 
@@ -31,18 +35,16 @@ app.controller('MainCtrl', ['$scope', 'gameDataFactory',
             $scope.gameData = gameData;
         }).error();
 
-        $scope.letters = ['B', 'A', ' '];
-
-        $scope.score = 0;
-
         $scope.makeGuess = function (letter) {
             gameFactory.guess(letter).success(function (gameData) {
                 $scope.gameData = gameData;
             });
         };
 
-        $scope.changeScore = function () {
-            $scope.score++;
+        $scope.newGame = function () {
+            gameFactory.newGame().success(function (gameData) {
+                $scope.gameData = gameData;
+            });
         };
 
     }
@@ -146,12 +148,6 @@ app.directive('hangman', function() {
                 }
             }
         );
-
-
-
-
-
-
     },
     template: '<canvas id="hangman-canvas" width="320" height="280"></canvas>'
   };

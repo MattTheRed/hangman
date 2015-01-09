@@ -92,6 +92,33 @@ h1 {
 #hangman-canvas {
     border:2px dashed #fff;
     padding:10px;
+    display:inline-block;
 }
 
+.game-over {
+    border:2px dashed #fff;
+    padding:10px;
+    display:inline-block;
+    width:320px;
+    height:280px;
+    font-size:50px;
+}
 
+.new-game {
+    display:block;
+    background-color:#F66F9A;
+    color:#fff;
+    font-size:24px;
+    border-radius:5px;
+    padding:10px;
+    margin-top:150px;
+}
+
+.scoreboard {
+    display:inline-block;
+    border:2px dashed #fff;
+    padding:10px;
+    height:280px;
+    vertical-align: top;
+    text-align:left;
+}

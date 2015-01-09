@@ -71,7 +71,9 @@ class Game(models.Model):
                 out_list.append(" ")
         return out_list
 
-
+    @property
+    def is_winner(self):
+        return " " not in self.display_word
 
     @property
     def json(self):
@@ -99,7 +101,14 @@ class Game(models.Model):
         return [guess.letter for guess in self.guesses]
 
     def make_guess(self, letter):
-        Guess.objects.create(game=self, letter=letter)
+        if self.guess_count < 10:
+            Guess.objects.create(game=self, letter=letter)
+            if self.is_winner:
+                self.outcome = "WIN"
+                self.save()
+        else:
+            self.outcome = "LOSS"
+            self.save()
 
     def __unicode__(self):
         return self.word.word
