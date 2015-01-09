@@ -58,6 +58,22 @@ class Game(models.Model):
         return letter_list
 
     @property
+    def display_word(self):
+        print self.word.word
+        letter_list = list(self.word.word.upper())
+        guesses_list = self.guesses_list
+        out_list = []
+        for letter in letter_list:
+            print letter
+            if letter in guesses_list:
+                out_list.append(letter)
+            else:
+                out_list.append(" ")
+        return out_list
+
+
+
+    @property
     def json(self):
         data = {}
         data["score"] = {
@@ -68,7 +84,8 @@ class Game(models.Model):
             "guess_count": self.guess_count,
             "outcome": self.outcome,
             "remaining_letters": self.remaining_letters,
-            "guesses": [guess.letter for guess in self.guesses]
+            "guesses": self.guesses_list,
+            "display_word": self.display_word
         }
 
         return json.dumps(data)
@@ -76,6 +93,10 @@ class Game(models.Model):
     @property
     def guesses(self):
         return Guess.objects.filter(game=self)
+
+    @property
+    def guesses_list(self):
+        return [guess.letter for guess in self.guesses]
 
     def make_guess(self, letter):
         Guess.objects.create(game=self, letter=letter)

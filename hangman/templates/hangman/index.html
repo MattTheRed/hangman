@@ -31,17 +31,17 @@
 
 <body ng-controller="MainCtrl">
     <div class="content">
-        [[gameData]]
         <h1>HANGMAN 5000</h1>
         <hangman score="gameData.current_game.guess_count"></hangman><br>
-        <div ng-repeat="letter in letters" class="word-letters">
-            [[letter]]
-        </div>
+        <div class="scoreboard">[[gameData.score]]</div>
         <br>
+        <div ng-repeat="letter in gameData.current_game.display_word track by $index" class="word-letters">
+            [[letter]]
+        </div><br>
         <a href="" ng-click="makeGuess(letter)" class="guess" ng-repeat="letter in gameData.current_game.remaining_letters">[[letter]]</a>
         <br>
         <h4>Already Guessed</h4>
-        <span class="guess" ng-repeat="letter in gameData.current_game.guesses">[[letter]]</span>
+        <span class="already-guessed" ng-repeat="letter in gameData.current_game.guesses">[[letter]]</span>
     </div>
 
 </body>
