@@ -33,7 +33,7 @@
     <div class="content">
         <h1>HANGMAN 5000</h1>
         <div>
-            <hangman ng-hide="gameData.current_game.outcome" score="gameData.current_game.guess_count"></hangman>
+            <hangman ng-hide="gameData.current_game.outcome" score="gameData.current_game.incorrect_guess_count"></hangman>
             <div class="game-over" ng-show="gameData.current_game.outcome">
                 [[gameData.current_game.outcome]]
                 <a class="new-game" ng-click="newGame()">New Game</a>
@@ -42,7 +42,7 @@
                 <h3>WINS: [[gameData.score.wins]]</h3>
                 <h3>LOSSES: [[gameData.score.losses]]</h3>
 
-                <h3 ng-hide="gameData.current_game.outcome"># GUESSES LEFT: [[10 - gameData.current_game.guess_count]]</h3>
+                <h3 ng-hide="gameData.current_game.outcome"># GUESSES LEFT: [[10 - gameData.current_game.incorrect_guess_count]]</h3>
             </div>
         </div>
         <br>

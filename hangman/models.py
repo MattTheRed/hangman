@@ -37,7 +37,6 @@ class Word(models.Model):
 class Game(models.Model):
     user = models.ForeignKey(GameUser)
     word = models.ForeignKey(Word)
-    # guess_count = models.PositiveSmallIntegerField(default=0)
     OUTCOME_CHOICES = (
         ('WIN', 'Win'),
         ('LOSS', 'Loss')
@@ -47,8 +46,8 @@ class Game(models.Model):
     alphabet = list(string.ascii_uppercase)
 
     @property
-    def guess_count(self):
-        return Guess.objects.filter(game=self).count()
+    def incorrect_guess_count(self):
+        return Guess.objects.filter(game=self, is_correct=False).count()
 
     @property
     def remaining_letters(self):
@@ -81,7 +80,7 @@ class Game(models.Model):
             "losses": self.user.losses,
         }
         data["current_game"] = {
-            "guess_count": self.guess_count,
+            "incorrect_guess_count": self.incorrect_guess_count,
             "outcome": self.outcome,
             "remaining_letters": self.remaining_letters,
             "guesses": self.guesses_list,
@@ -99,8 +98,9 @@ class Game(models.Model):
         return [guess.letter for guess in self.guesses]
 
     def make_guess(self, letter):
-        if self.guess_count < 10:
-            Guess.objects.create(game=self, letter=letter)
+        if self.incorrect_guess_count < 10:
+            is_correct = True if letter.upper() in self.word.word.upper() else False
+            Guess.objects.create(game=self, letter=letter, is_correct=is_correct)
             if self.is_winner:
                 self.outcome = "WIN"
                 self.save()
@@ -117,4 +117,5 @@ class Game(models.Model):
 
 class Guess(models.Model):
     game = models.ForeignKey(Game)
+    is_correct = models.BooleanField(default=False)
     letter = models.CharField(max_length=1)
