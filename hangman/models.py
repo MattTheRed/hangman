@@ -53,6 +53,7 @@ class Game(models.Model):
     def remaining_letters(self):
         letter_list = self.alphabet[:]
         for letter in self.guesses:
+            print letter.letter
             letter_list.remove(letter.letter)
         return letter_list
 
@@ -98,8 +99,9 @@ class Game(models.Model):
         return [guess.letter for guess in self.guesses]
 
     def make_guess(self, letter):
+        letter = letter.upper()
         if self.incorrect_guess_count < 10:
-            is_correct = True if letter.upper() in self.word.word.upper() else False
+            is_correct = True if letter in self.word.word.upper() else False
             Guess.objects.create(game=self, letter=letter, is_correct=is_correct)
             if self.is_winner:
                 self.outcome = "WIN"

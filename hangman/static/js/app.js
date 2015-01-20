@@ -48,6 +48,13 @@ app.controller('MainCtrl', ['$scope', 'gameDataFactory',
             });
         };
 
+        $scope.keyPress = function (key) {
+            // Only accept a-z as guesses
+            if (key.charCode >= 97 && key.charCode <= 122) {
+                $scope.makeGuess(String.fromCharCode(key.charCode));
+            }
+        };
+
     }
 ]);
 
