@@ -1,7 +1,6 @@
 ***********
 Hangman
 ***********
-
 A web app for playing hangman. Demo at: http://hangman5000.herokuapp.com/
 
 Login with the username/password m/m
