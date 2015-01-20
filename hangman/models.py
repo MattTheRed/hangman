@@ -106,6 +106,10 @@ class Game(models.Model):
                 if self.is_winner:
                     self.outcome = "WIN"
                     self.save()
+                else:
+                    if self.incorrect_guess_count == 10:
+                        self.outcome = "LOSS"
+                        self.save()
             else:
                 self.outcome = "LOSS"
                 self.save()

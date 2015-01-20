@@ -23,5 +23,6 @@ def game_data(request):
         elif "guess" in request.body:
             guess = json.loads(request.body)["guess"]
             game.make_guess(guess)
+    print game.json
     return HttpResponse(game.json, content_type="application/json")
 
