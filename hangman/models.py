@@ -121,7 +121,8 @@ class Game(models.Model):
         return self.word.word
 
     def save(self, *args, **kwargs):
-        self.word = Word.objects.all().order_by("?")[0]
+        if not self.pk:
+            self.word = Word.objects.all().order_by("?")[0]
         super(Game, self).save(*args, **kwargs)
 
 class Guess(models.Model):
