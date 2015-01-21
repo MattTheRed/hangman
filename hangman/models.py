@@ -87,7 +87,7 @@ class Game(models.Model):
             "outcome": self.outcome,
             "remaining_letters": self.remaining_letters,
             "guesses": self.guesses_list,
-            "display_word": self.display_word
+            "display_word": self.word.word if self.outcome == "LOSS" else self.display_word,
         }
 
         return json.dumps(data)

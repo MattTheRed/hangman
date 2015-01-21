@@ -46,11 +46,11 @@
             </div>
         </div>
         <br>
-        <div ng-hide="gameData.current_game.outcome">
+        <div>
             <div ng-repeat="letter in gameData.current_game.display_word track by $index" class="word-letters">
                 [[letter]]
             </div><br>
-            <a href="" ng-click="makeGuess(letter)" class="guess-[[letter.is_guessed]]" ng-repeat="letter in gameData.current_game.remaining_letters">[[letter.letter]]</a>
+            <a href=""  ng-hide="gameData.current_game.outcome" ng-click="makeGuess(letter)" class="guess-[[letter.is_guessed]]" ng-repeat="letter in gameData.current_game.remaining_letters">[[letter.letter]]</a>
         </div>
     </div>
 </body>
