@@ -51,9 +51,12 @@ class Game(models.Model):
 
     @property
     def remaining_letters(self):
-        letter_list = self.alphabet[:]
-        for letter in self.guesses:
-            letter_list.remove(letter.letter)
+        letter_list = []
+        for letter in self.alphabet:
+            if letter in self.guesses_list:
+                letter_list.append({"letter": letter, "is_guessed": False})
+            else:
+                letter_list.append({"letter": letter, "is_guessed": True})
         return letter_list
 
     @property

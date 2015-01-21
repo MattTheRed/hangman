@@ -21,7 +21,7 @@ a {
     font-size:30px;
     font-weight:bold;
 }
-.guess {
+.guess-true {
     display:inline-block;
     background-color:#fff;
     border-radius:24px;
@@ -34,7 +34,7 @@ a {
     margin:5px;
 }
 
-.guess:hover {
+.guess-true:hover {
     display:inline-block;
     background-color:#F66F9A;
     border-radius:24px;
@@ -48,6 +48,20 @@ a {
     color:#fff;
 }
 
+.guess-false {
+    display:inline-block;
+    background-color:#e2e2e2;
+    border-radius:24px;
+    width:40px;
+    height:40px;
+    text-align:center;
+    line-height:40px;
+    font-size:22px;
+    border:2px solid #ccc;
+    margin:5px;
+pointer-events: none;
+   cursor: default;
+}
 .already-guessed {
     display:inline-block;
     background-color:#F66F9A;
